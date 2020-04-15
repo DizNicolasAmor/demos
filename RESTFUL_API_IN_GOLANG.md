@@ -34,21 +34,27 @@ REST stands for REpresentational State Transfer. It is a software architectural 
 It was first presented by Roy Fielding in 2000 in his PhD dissertation.
 
 **Client-server architecture**
+
 This principle is related to the separation of concerns. It improves scalability and independence.
 
 **Stateless**
+
 The server does not memorize the previous requests (it is stateless). Each request must contain all the information necessary to service the request, and the session state is held in the client.
 
 **Cacheable**
+
 Clients and intermediaries can cache responses. Responses must therefore, implicitly or explicitly, define themselves as cacheable or not.
 
 **Uniform interface**
+
 The purpose is to transmit information in a standardized way. So there must be uniformity in resources (how entities are represented), representations (in what format), descriptive messages (what is the intention of the method or resource) and the HATEOAS principle (Hypermedia as the engine of application state, that means client should then be able to use server-provided links dynamically to discover all the available actions and resources it needs).
 
 **Layered system**
+
 A client cannot ordinarily tell whether it is connected directly to the end server, or to an intermediary along the way. So this principle aims to the decoupling.
 
 **Code on demand (optional)**
+
 Servers can temporarily extend or customize the functionality of a client by transferring executable code.
 
 
@@ -82,19 +88,23 @@ Exercise: with this information now you can write your own definition.
 ##### Util libraries
 
 **net/http**
+
 - Native golang package that provides HTTP client and server implementations.
 - Doc: `https://golang.org/pkg/net/http/`
 
 **net/http/httptest**
+
 - Native golang package to test http requests.
 - Doc: `https://golang.org/pkg/net/http/httptest/`
 - Example: `https://golang.org/src/net/http/httptest/example_test.go`
 
 **encoding/json**
+
 - Native golang package that implements encoding and decoding of JSON. In other words, it handles the mapping between JSON and Go values.
 - Doc: `https://golang.org/pkg/encoding/json/`
 
 **mux**
+
 - It is a  URL router and dispatcher. We use this package to match URL paths with their handlers and with HTTP verbs.
 - Doc: `https://github.com/gorilla/mux`
 - Example: 
@@ -109,17 +119,20 @@ Exercise: with this information now you can write your own definition.
 	````
 
 **bson**
+
 - It means binary json. I use this package to create and manage IDs. It is related to mongo, but you can use it regardless of this DB. For example, in the previous repo there is no DB and I hardcoded the data in a local variable.
 - Source: `https://gopkg.in/mgo.v2/bson`
 - Doc: `https://godoc.org/gopkg.in/mgo.v2/bson`
 - Usage: first generate a swagger.json or swagger.yaml and then serve it, either locally or in any online swagger viewer.
 
 **validator**
+
 - It validates values in golang structs and primitive types based on tags.
 - Source: `https://gopkg.in/go-playground/validator.v9`
 - Doc: `https://godoc.org/gopkg.in/go-playground/validator.v9`
 
 **go-swagger**
+
 - It is a tool to document your APIs.
 - Doc: `https://github.com/go-swagger/go-swagger`
 - Usage: first generate a `swagger.json` or `swagger.yaml` and then serve it, either locally or in any online swagger viewer.
@@ -142,13 +155,17 @@ The first Golang real world project I participated was this: `https://gitlab.com
 Maybe if you have access you can read it. But if not, don’t worry, I just want to mention other tools that you probably will use when your service gets bigger.
 
 **Connection with DB**
+
 Probably you will need to use packages to connect to a DB service. In this example there is a connection with a postgresql DB service and there is also the util GORM framework.
 
 **Sub-routes with mux**
+
 With the mux package we can also order and clarify our routes with sub-routes.
 
 **reflect**
+
 This Golang native package manipulates data with arbitrary types. I used it when I needed to save values from a var with a struct type, into a var with a different struct type. Doc: `https://golang.org/pkg/reflect/`
 
 **sync**
+
 This Golang native package provides basic synchronization. I used it when in a handler I had to consume data from different services and integrate them: for example, wait for different goroutines and work with resulting data. Doc: `https://golang.org/pkg/sync/`
